@@ -63,9 +63,8 @@ The response will be a JSON that follows the correct schema.
 </rail>
 """.format(rail_output_spec=self.rail_output_spec, query=self.query)
         import re
-        variable_names = re.findall(r"\{\{(.*?)\}\}", full_prompt, re.MULTILINE | re.DOTALL)
         self.output_parser = GuardrailsOutputParser.from_rail_string(full_prompt)
-        prompt = PromptTemplate(template=self.output_parser.guard.base_prompt, input_variables=variable_names)
+        prompt = PromptTemplate(template=self.output_parser.guard.base_prompt, input_variables=self.output_parser.guard.prompt.variable_names)
         template = HumanMessagePromptTemplate(prompt=prompt)
         return template
 
@@ -112,8 +111,7 @@ The response will be a JSON that follows the correct schema.
             prompts=[ChatPromptValue(messages=[self.system_message, prompt_value])],
             callbacks=run_manager.get_child() if run_manager else None
         )
-        
-        return {self.output_key: response.generations[0][0].text}
+        return {self.output_key: self.output_parser.parse(response.generations[0][0].text)}
 
     async def _acall(
         self,

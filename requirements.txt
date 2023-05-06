@@ -4,5 +4,5 @@ openai
 python-dotenv
 unstructured
 tiktoken
-guardrails-ai
+git+https://github.com/ShreyaR/guardrails@3ab8e20
 pydantic

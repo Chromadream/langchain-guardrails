@@ -15,8 +15,6 @@ please extract a dictionary that contains the patient's information.
 <object name="patient_info">
     <string name="gender" description="Patient's gender" />
     <integer name="age" format="valid-range: 0 100"/>  
-
-
     <list name="symptoms" description="Symptoms that the patient is currently experiencing. Each symptom should be classified into  separate item in the list.">
         <object>
             <string name="symptom" description="Symptom that a patient is experiencing" />
@@ -24,8 +22,6 @@ please extract a dictionary that contains the patient's information.
                 format="valid-choices: {['head', 'neck', 'chest']}"
                 on-fail-valid-choices="reask"
             />  
-
-
         </object>
     </list>
     <list name="current_meds" description="Medications the patient is currently taking and their response">
