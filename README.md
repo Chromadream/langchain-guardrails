@@ -1,6 +1,6 @@
 # RAILChain demo
 
-[Langchain](https://python.langchain.com/en/latest/getting_started/getting_started.html) 💟 [Guardrails].
+[Langchain](https://python.langchain.com/en/latest/getting_started/getting_started.html) 💟 [Guardrails](https://shreyar.github.io/guardrails/getting_started/#objective).
 
 An attempt to make Guardrails play more nicely with Langchain.
 
